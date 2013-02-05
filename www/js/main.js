@@ -2,19 +2,21 @@ require([
   'template-store',
   'people',
   'likes-list',
+  'results-list',
   'jquery',
   'underscore'
 ], function(
   TemplateStore,
   People,
   LikesList,
+  ResultsList,
   $,
   _
 ) {
   var templates = new TemplateStore();
 
   $(function() {
-    var resultsList = $( '#results' );
+    var results = new ResultsList( '#results' );
     var likes = new LikesList( '#liked' );
     var pending = false;
 
@@ -30,24 +32,19 @@ require([
 
       pending = true;
 
-      People.findByName( query ).then(function( data ) {
-        templates.fetch('people-detailed.tmpl').then(function(t) {
-          var tmpl = _.template( t );
-          resultsList.html( tmpl({ people : data.results }) );
+      $.when(
+        People.findByName( query ),
+        templates.fetch('people-detailed.tmpl')
+      ).then(function(p,t) {
+        results.update( p[0], t[0] );
           pending = false;
-        });
       });
 
-      $('<li>', {
-        'class' : 'searching',
-        html : 'Searching &hellip;'
-      }).appendTo( resultsList.empty() );
+      results.block();
     });
 
-    resultsList.on( 'click', '.like', function(e) {
-      e.preventDefault();
-      var name = $( this ).closest( 'li' ).find( 'h2' ).text();
-      likes.add( name );
+    results.el.on('like', function(e, person) {
+      likes.add( person );
     });
 
   });
