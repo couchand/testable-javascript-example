@@ -14,10 +14,16 @@ define(['people'], function(People) {
       });
 
       it('fetches from the right url', function() {
-        var promise = People.findByName('foo bar');
+        People.findByName('foo bar');
 
         this.requests.length.should.eql(1);
         this.requests[0].url.should.eql('/data/search.json?q=foo+bar');
+      });
+
+      it('returns a promise', function() {
+        var promise = People.findByName('foo bar');
+
+        promise.then.should.be.a('function');
       });
 
     });
