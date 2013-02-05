@@ -23,10 +23,13 @@ module.exports = function(grunt) {
         eqnull: true,
         browser: true,
         globals: {
-          $: true,
-          _: true,
           require: true,
-          define: true
+          define: true,
+          beforeEach: true,
+          afterEach: true,
+          sinon: true,
+          describe: true,
+          it: true
         }
       }
     },
