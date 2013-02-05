@@ -25,7 +25,8 @@ module.exports = function(grunt) {
         globals: {
           $: true,
           _: true,
-          require: true
+          require: true,
+          define: true
         }
       }
     },
