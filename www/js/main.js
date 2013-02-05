@@ -1,4 +1,14 @@
-require(['template-store', 'jquery', 'underscore'], function(TemplateStore, $, _) {
+require([
+  'template-store',
+  'people',
+  'jquery',
+  'underscore'
+], function(
+  TemplateStore,
+  People,
+  $,
+  _
+) {
   var templates = new TemplateStore();
 
   $(function() {
@@ -18,16 +28,12 @@ require(['template-store', 'jquery', 'underscore'], function(TemplateStore, $, _
 
       pending = true;
 
-      $.ajax( '/data/search.json', {
-        data : { q: query },
-        dataType : 'json',
-        success : function( data ) {
-          templates.fetch('people-detailed.tmpl').then(function(t) {
-            var tmpl = _.template( t );
-            resultsList.html( tmpl({ people : data.results }) );
-            pending = false;
-          });
-        }
+      People.findByName( query ).then(function( data ) {
+        templates.fetch('people-detailed.tmpl').then(function(t) {
+          var tmpl = _.template( t );
+          resultsList.html( tmpl({ people : data.results }) );
+          pending = false;
+        });
       });
 
       $('<li>', {
