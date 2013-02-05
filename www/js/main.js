@@ -1,11 +1,13 @@
 require([
   'template-store',
   'people',
+  'likes-list',
   'jquery',
   'underscore'
 ], function(
   TemplateStore,
   People,
+  LikesList,
   $,
   _
 ) {
@@ -13,7 +15,7 @@ require([
 
   $(function() {
     var resultsList = $( '#results' );
-    var liked = $( '#liked' );
+    var likes = new LikesList( '#liked' );
     var pending = false;
 
     $( '#searchForm' ).on( 'submit', function( e ) {
@@ -45,8 +47,7 @@ require([
     resultsList.on( 'click', '.like', function(e) {
       e.preventDefault();
       var name = $( this ).closest( 'li' ).find( 'h2' ).text();
-      liked.find( '.no-results' ).remove();
-      $( '<li>', { text: name } ).appendTo( liked );
+      likes.add( name );
     });
 
   });
