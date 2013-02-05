@@ -35,8 +35,9 @@ require([
       $.when(
         People.findByName( query ),
         templates.fetch('people-detailed.tmpl')
-      ).then(function(p,t) {
+      ).done(function(p,t) {
         results.update( p, t );
+      }).always(function() {
         pending = false;
       });
 
