@@ -36,7 +36,7 @@ require([
         People.findByName( query ),
         templates.fetch('people-detailed.tmpl')
       ).then(function(p,t) {
-        results.update( p[0], t[0] );
+        results.update( p, t );
         pending = false;
       });
 

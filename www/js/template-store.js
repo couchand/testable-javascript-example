@@ -5,7 +5,9 @@ define(['jquery'], function($){
 
   TemplateStore.prototype.fetch = function(name) {
     if ( !this.store[ name ] ) {
-      this.store[ name ] = $.get( '/templates/' + name );
+      this.store[ name ] = $.get( '/templates/' + name ).then(function(t){
+        return t;
+      }).promise();
     }
     return this.store[ name ];
   };

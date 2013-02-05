@@ -12,7 +12,7 @@ define(['template-store', 'jquery', 'underscore'], function(TemplateStore, $, _)
 
   ResultsList.prototype.update = function(data, t) {
     var tmpl = _.template( t );
-    this.el.html( tmpl({ people : data.results }) );
+    this.el.html( tmpl({ people : data }) );
   };
 
   ResultsList.prototype.block = function() {
