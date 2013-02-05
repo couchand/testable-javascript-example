@@ -7,7 +7,7 @@
       window.assert = chai.assert;
     },
     'bdd-should': function() {
-      window.should = chai.should();
+      window.shouldchai = chai.should();
     },
     'bdd-expect': function() {
       window.expect = chai.expect;
