@@ -1,5 +1,5 @@
-require(['templates', 'jquery', 'underscore'], function(Templates, $, _) {
-  var templates = new Templates();
+require(['template-store', 'jquery', 'underscore'], function(TemplateStore, $, _) {
+  var templates = new TemplateStore();
 
   $(function() {
     var resultsList = $( '#results' );
