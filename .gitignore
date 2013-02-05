@@ -1,3 +1,4 @@
 Gemfile
 Gemfile.lock
 node_modules
+test/fixtures
