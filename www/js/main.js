@@ -1,15 +1,7 @@
-require(['jquery', 'underscore'], function($, _) {
-  var tmplCache = {};
-
-  function loadTemplate(name) {
-    if ( !tmplCache[ name ] ) {
-      tmplCache[ name ] = $.get( '/templates/' + name );
-    }
-    return tmplCache[ name ];
-  }
+require(['templates', 'jquery', 'underscore'], function(Templates, $, _) {
+  var templates = new Templates();
 
   $(function() {
-
     var resultsList = $( '#results' );
     var liked = $( '#liked' );
     var pending = false;
@@ -30,7 +22,7 @@ require(['jquery', 'underscore'], function($, _) {
         data : { q: query },
         dataType : 'json',
         success : function( data ) {
-          loadTemplate('people-detailed.tmpl').then(function(t) {
+          templates.fetch('people-detailed.tmpl').then(function(t) {
             var tmpl = _.template( t );
             resultsList.html( tmpl({ people : data.results }) );
             pending = false;
