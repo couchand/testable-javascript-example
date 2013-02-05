@@ -37,7 +37,7 @@ require([
         templates.fetch('people-detailed.tmpl')
       ).then(function(p,t) {
         results.update( p[0], t[0] );
-          pending = false;
+        pending = false;
       });
 
       results.block();
