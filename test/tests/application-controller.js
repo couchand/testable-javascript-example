@@ -9,12 +9,14 @@ define([
 
     describe('onLike', function() {
       beforeEach(function() {
+        this.templates = sinon.stub( TemplateStore.prototype, 'fetch' ).returns( $.when('baz') );
         this.likes = {
           add: new sinon.spy()
         };
       });
       afterEach(function() {
         $( document ).off('like search');
+        this.templates.restore();
       });
       it('calls like.add with the person', function() {
         var ac = new ApplicationController();

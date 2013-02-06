@@ -29,7 +29,9 @@ define([
     });
 
     $( document ).on('like', function( e, person ) {
-      me.likes.add( person );
+      me.templates.fetch('people-likes.tmpl').done(function( template ) {
+        me.likes.add( person, template );
+      });
     });
   };
 
