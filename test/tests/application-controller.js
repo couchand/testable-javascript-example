@@ -58,7 +58,7 @@ define([
         this.results.update.callCount.should.equal(1);
         this.results.update.calledWith(['foobar'], 'baz').should.equal(true);
       });
-      it('ignores intervening calls', function() {
+      it('ignores intervening events', function() {
         var ac = new ApplicationController();
         ac.registerResults( this.results );
 
