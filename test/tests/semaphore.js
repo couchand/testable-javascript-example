@@ -13,6 +13,7 @@ define([
         s.isUp().should.eql(true);
         didRaise.should.eql(true);
       });
+
       it('returns false when already raised', function() {
         var s = new Semaphore();
         s.raise();
@@ -33,6 +34,7 @@ define([
         s.isDown().should.eql(true);
         didLower.should.eql(true);
       });
+
       it('returns false when already lowered', function() {
         var s = new Semaphore();
 
@@ -48,6 +50,7 @@ define([
 
         s.isUp().should.equal(false);
       });
+
       it('returns true when raised', function() {
         var s = new Semaphore();
         s.raise();
@@ -62,6 +65,7 @@ define([
 
         s.isDown().should.equal(true);
       });
+
       it('returns false when raised', function() {
         var s = new Semaphore();
         s.raise();
@@ -69,7 +73,5 @@ define([
         s.isDown().should.equal(false);
       });
     });
-
   });
-
 });
