@@ -1,3 +1,28 @@
+Testable JavaScript Example
+===========================
+
+This is an example application illustrating best practices
+in testing JavaScript applications.  It began with an app
+given to me as an assignment in the Writing Testable
+JavaScript class given by Mike Pennisi from Bocoup.
+
+<http://training.bocoup.com/writing-testable-javascript/>
+
+February 4 &amp; 5, 2013
+
+Warning
+-------
+
+The documentation is scant.  As always, the only true
+documentation is the code.
+
+And now for something completely different...
+---------------------------------------------
+
+What follows is the original README, giving basic Node.js
+and Grunt setup instructions.
+
+
 # Workshop: Writing Testable JavaScript
 
 ## Installation
