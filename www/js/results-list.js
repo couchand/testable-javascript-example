@@ -12,8 +12,8 @@ define([
     });
   };
 
-  ResultsList.prototype.update = function( data, tmpl ) {
-    this.el.html( tmpl({ people : data }) );
+  ResultsList.prototype.update = function( data, tmpl, t ) {
+    this.el.html( tmpl({ people: data, t: t }) );
   };
 
   ResultsList.prototype.block = function() {

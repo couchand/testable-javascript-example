@@ -56,7 +56,7 @@ define([
         $( document ).trigger( 'search', 'foobar' );
 
         this.results.update.callCount.should.equal(1);
-        this.results.update.calledWith(['foobar'], 'baz').should.equal(true);
+        this.results.update.calledWithExactly(['foobar'], 'baz', 'baz').should.equal(true);
       });
       it('ignores intervening events', function() {
         var ac = new ApplicationController();

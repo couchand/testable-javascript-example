@@ -1,17 +1,20 @@
 define([
+  'person',
   'jquery',
   'underscore'
-], function( $, _ ) {
+], function( Person, $, _ ) {
 
-  var People = function(initial) {
-    this.population = initial;
+  var People = function( initial ) {
+    this.population = !initial ? [] : $.map( initial, function( el ) {
+      return new Person( el );
+    });
   };
 
   People.prototype.isEmpty = function() {
     return !(this.population && this.population.length);
   };
 
-  People.prototype.each = function(callback) {
+  People.prototype.each = function( callback ) {
     _.each( this.population, callback );
   };
 

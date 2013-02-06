@@ -14,11 +14,13 @@ define([
       if ( !me.pending.raise() ) { return; }
 
       var peopleFound = People.findByName( name );
-      var templatesFetched = me.templates.fetch('people-detailed.tmpl');
+      var listTemplateFetched = me.templates.fetch('people-detailed.tmpl');
+      var itemTemplateFetched = me.templates.fetch('person-detailed.tmpl');
 
       $.when(
         peopleFound,
-        templatesFetched
+        listTemplateFetched,
+        itemTemplateFetched
       ).done(
         $.proxy( me.results, 'update' )
       ).always(
