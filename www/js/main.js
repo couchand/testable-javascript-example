@@ -6,15 +6,8 @@ require([
   'semaphore',
   'search-form',
   'jquery'
-], function(
-  TemplateStore,
-  People,
-  LikesList,
-  ResultsList,
-  Semaphore,
-  SearchForm,
-  $
-) {
+], function( TemplateStore, People, LikesList, ResultsList, Semaphore, SearchForm, $ ) {
+
   var templates = new TemplateStore();
   var pending = new Semaphore();
 
@@ -41,9 +34,10 @@ require([
       results.block();
     });
 
-    $( document ).on('like', function(e, person) {
+    $( document ).on('like', function( e, person ) {
       likes.add( person );
     });
 
   });
+
 });

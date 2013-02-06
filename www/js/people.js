@@ -1,12 +1,14 @@
-define(['jquery'], function($) {
+define([
+  'jquery'
+], function( $ ) {
 
   var People = function() {};
 
-  People.findByName = function(name) {
+  People.findByName = function( name ) {
     return $.ajax( '/data/search.json', {
       data : { q: name },
       dataType : 'json'
-    }).then(function(data) {
+    }).then(function( data ) {
       return data.results;
     }).promise();
   };

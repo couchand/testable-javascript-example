@@ -1,7 +1,9 @@
-define(['jquery'], function($) {
+define([
+  'jquery'
+], function( $ ) {
 
   var LikesList = function( sel ) {
-    this.el = $(sel);
+    this.el = $( sel );
   };
 
   LikesList.prototype.add = function( person ) {

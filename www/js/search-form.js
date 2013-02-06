@@ -1,9 +1,11 @@
-define(['jquery'], function($) {
+define([
+  'jquery'
+], function( $ ) {
 
-  var SearchForm = function(sel) {
+  var SearchForm = function( sel ) {
     var el = this.el = $( sel );
 
-    el.on('submit', function(e) {
+    el.on('submit', function( e ) {
       e.preventDefault();
 
       var query = $.trim( el.find( 'input[name="q"]' ).val() );
