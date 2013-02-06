@@ -1,7 +1,6 @@
 define([
-  'jquery',
-  'underscore'
-], function( $, _ ) {
+  'jquery'
+], function( $ ) {
 
   var ResultsList = function( sel ) {
     var el = this.el = $( sel );
@@ -13,8 +12,7 @@ define([
     });
   };
 
-  ResultsList.prototype.update = function( data, t ) {
-    var tmpl = _.template( t );
+  ResultsList.prototype.update = function( data, tmpl ) {
     this.el.html( tmpl({ people : data }) );
   };
 
