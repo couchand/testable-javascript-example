@@ -3,6 +3,7 @@ require([
   'people',
   'likes-list',
   'results-list',
+  'semaphore',
   'jquery',
   'underscore'
 ], function(
@@ -10,6 +11,7 @@ require([
   People,
   LikesList,
   ResultsList,
+  Semaphore,
   $,
   _
 ) {
@@ -18,19 +20,19 @@ require([
   $(function() {
     var results = new ResultsList( '#results' );
     var likes = new LikesList( '#liked' );
-    var pending = false;
+    var pending = new Semaphore();
 
     $( '#searchForm' ).on( 'submit', function( e ) {
       e.preventDefault();
 
-      if ( pending ) { return; }
+      if ( pending.isUp() ) { return; }
 
       var form = $( this );
       var query = $.trim( form.find( 'input[name="q"]' ).val() );
 
       if ( !query ) { return; }
 
-      pending = true;
+      pending.raise();
 
       $.when(
         People.findByName( query ),
@@ -38,7 +40,7 @@ require([
       ).done(function(p,t) {
         results.update( p, t );
       }).always(function() {
-        pending = false;
+        pending.lower();
       });
 
       results.block();

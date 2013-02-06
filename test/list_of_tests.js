@@ -3,6 +3,7 @@ define([], function() {
     'tests/template-store',
     'tests/people',
     'tests/likes-list',
-    'tests/results-list'
+    'tests/results-list',
+    'tests/semaphore'
   ];
 });
