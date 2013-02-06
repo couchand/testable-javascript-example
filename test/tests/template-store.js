@@ -34,6 +34,25 @@ define([
         this.requests.length.should.eql(1);
       });
 
+      it('returns a promise', function() {
+        var ts = new TemplateStore();
+
+        var fetchResult = ts.fetch('foobar');
+
+        fetchResult.then.should.be.a('function');
+      });
+
+      it('returns a promise for a templating function', function() {
+        var ts = new TemplateStore();
+
+        var fetchResult = ts.fetch('foobar');
+        this.requests[0].respond( 200, {}, 'foobar' );
+
+        fetchResult.then(function( result ) {
+          result.should.be.a('function');
+        });
+      });
+
     });
   });
 
