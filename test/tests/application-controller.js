@@ -28,8 +28,8 @@ define([
 
     describe('onSearch', function() {
      beforeEach(function() {
-        this.search = sinon.stub( People, 'findByName' ).returns(['foobar']);
-        this.templates = sinon.stub( TemplateStore.prototype, 'fetch' ).returns('baz');
+        this.search = sinon.stub( People, 'findByName' );
+        this.templates = sinon.stub( TemplateStore.prototype, 'fetch' );
         this.results = {
           block: new sinon.spy(),
           update: new sinon.spy()
@@ -44,6 +44,9 @@ define([
         var ac = new ApplicationController();
         ac.registerResults( this.results );
 
+        // search once and hang
+        this.search.returns(new $.Deferred());
+
         $( document ).trigger( 'search', 'foobar' );
 
         this.search.callCount.should.equal(1);
@@ -53,10 +56,13 @@ define([
         var ac = new ApplicationController();
         ac.registerResults( this.results );
 
-        $( document ).trigger( 'search', 'foobar' );
+        this.search.returns(['bar']);
+        this.templates.returns('baz');
+
+        $( document ).trigger( 'search', 'foo' );
 
         this.results.update.callCount.should.equal(1);
-        this.results.update.calledWithExactly(['foobar'], 'baz', 'baz').should.equal(true);
+        this.results.update.calledWithExactly(['bar'], 'baz', 'baz').should.equal(true);
       });
       it('ignores intervening events', function() {
         var ac = new ApplicationController();
