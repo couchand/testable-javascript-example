@@ -10,6 +10,8 @@ JavaScript class given by Mike Pennisi from Bocoup.
 
 February 4 &amp; 5, 2013
 
+See my notes from that course at: <http://github.com/couchand/testable-javascript-notes>
+
 Warning
 -------
 
