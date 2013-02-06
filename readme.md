@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/couchand/testable-javascript-example.png?branch=like-2-tmpl)](https://travis-ci.org/couchand/testable-javascript-example)
+
+This branch is dead.  It was a WIP but has been abandoned.
+
 # Workshop: Writing Testable JavaScript
 
 ## Installation
