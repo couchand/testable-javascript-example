@@ -37,11 +37,11 @@ require([
       $.when(
         People.findByName( query ),
         templates.fetch('people-detailed.tmpl')
-      ).done(function(p,t) {
-        results.update( p, t );
-      }).always(function() {
-        pending.lower();
-      });
+      ).done(
+        $.proxy( results, 'update' )
+      ).always(
+        $.proxy( pending, 'lower' )
+      );
 
       results.block();
     });
