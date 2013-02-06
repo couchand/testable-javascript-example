@@ -26,8 +26,7 @@ require([
     var searchForm = new SearchForm( '#searchForm' );
 
     $( document ).on( 'search', function( e, name ) {
-      if ( pending.isUp() ) { return; }
-      pending.raise();
+      if ( !pending.raise() ) { return; }
 
       var peopleFound = People.findByName( name );
       var templatesFetched = templates.fetch('people-detailed.tmpl');
