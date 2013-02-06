@@ -1,4 +1,7 @@
-define(['template-store'], function(TemplateStore) {
+define([
+  'template-store'
+], function(TemplateStore) {
+
   describe('TemplateStore', function() {
     describe('#fetch', function(){
 
@@ -33,4 +36,5 @@ define(['template-store'], function(TemplateStore) {
 
     });
   });
+
 });

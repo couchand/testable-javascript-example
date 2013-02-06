@@ -1,4 +1,8 @@
-define(['results-list', 'jquery'], function(ResultsList, $) {
+define([
+  'results-list',
+  'jquery'
+], function(ResultsList, $) {
+
   describe('ResultsList', function() {
     describe('#block', function() {
 
@@ -21,4 +25,5 @@ define(['results-list', 'jquery'], function(ResultsList, $) {
 
     });
   });
+
 });

@@ -1,4 +1,8 @@
-define(['likes-list', 'jquery'], function(LikesList, $) {
+define([
+  'likes-list',
+  'jquery'
+], function(LikesList, $) {
+
   describe('LikesList', function() {
     describe('#add', function() {
 
@@ -17,4 +21,5 @@ define(['likes-list', 'jquery'], function(LikesList, $) {
 
     });
   });
+
 });

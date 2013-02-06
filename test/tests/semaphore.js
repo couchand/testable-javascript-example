@@ -1,4 +1,7 @@
-define(['semaphore'], function(Semaphore) {
+define([
+  'semaphore'
+], function(Semaphore) {
+
   describe('Semaphore', function() {
 
     describe('#raise', function() {
@@ -68,4 +71,5 @@ define(['semaphore'], function(Semaphore) {
     });
 
   });
+
 });

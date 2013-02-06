@@ -1,4 +1,8 @@
-define(['search-form', 'jquery'], function(SearchForm, $) {
+define([
+  'search-form',
+  'jquery'
+], function(SearchForm, $) {
+
   describe('SearchForm', function() {
     describe('onSubmit', function() {
 
@@ -43,4 +47,5 @@ define(['search-form', 'jquery'], function(SearchForm, $) {
 
     });
   });
+
 });

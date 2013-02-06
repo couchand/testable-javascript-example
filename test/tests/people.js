@@ -1,4 +1,7 @@
-define(['people'], function(People) {
+define([
+  'people'
+], function(People) {
+
   describe('People', function() {
     describe('#findByName', function() {
 
@@ -28,4 +31,5 @@ define(['people'], function(People) {
 
     });
   });
+
 });
