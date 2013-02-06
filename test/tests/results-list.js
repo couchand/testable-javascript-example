@@ -19,8 +19,8 @@ define([
 
         rl.block();
 
-        $('#test ul').children().length.should.eql(1);
-        $('#test ul').children().eq(0).text().should.match(/search/i);
+        expect($('#test ul').children().length).to.eql(1);
+        expect($('#test ul').children().eq(0).text()).to.match(/search/i);
       });
 
     });

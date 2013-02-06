@@ -10,8 +10,8 @@ define([
 
         var didRaise = s.raise();
 
-        s.isUp().should.eql(true);
-        didRaise.should.eql(true);
+        expect(s.isUp()).to.eql(true);
+        expect(didRaise).to.eql(true);
       });
       it('returns false when already raised', function() {
         var s = new Semaphore();
@@ -19,7 +19,7 @@ define([
 
         var didRaise = s.raise();
 
-        didRaise.should.eql(false);
+        expect(didRaise).to.eql(false);
       });
     });
 
@@ -30,15 +30,15 @@ define([
 
         var didLower = s.lower();
 
-        s.isDown().should.eql(true);
-        didLower.should.eql(true);
+        expect(s.isDown()).to.eql(true);
+        expect(didLower).to.eql(true);
       });
       it('returns false when already lowered', function() {
         var s = new Semaphore();
 
         var didLower = s.lower();
 
-        didLower.should.eql(false);
+        expect(didLower).to.eql(false);
       });
     });
 
@@ -46,13 +46,13 @@ define([
       it('returns false when lowered', function() {
         var s = new Semaphore();
 
-        s.isUp().should.equal(false);
+        expect(s.isUp()).to.equal(false);
       });
       it('returns true when raised', function() {
         var s = new Semaphore();
         s.raise();
 
-        s.isUp().should.equal(true);
+        expect(s.isUp()).to.equal(true);
       });
     });
 
@@ -60,13 +60,13 @@ define([
       it('returns true when lowered', function() {
         var s = new Semaphore();
 
-        s.isDown().should.equal(true);
+        expect(s.isDown()).to.equal(true);
       });
       it('returns false when raised', function() {
         var s = new Semaphore();
         s.raise();
 
-        s.isDown().should.equal(false);
+        expect(s.isDown()).to.equal(false);
       });
     });
 

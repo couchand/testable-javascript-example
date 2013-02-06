@@ -23,7 +23,7 @@ define([
 
         $( document ).trigger( 'like', 'foobar' );
 
-        this.likes.add.should.have.been.calledOnce;
+        expect(this.likes.add).to.have.been.calledOnce;
       });
     });
 
@@ -51,8 +51,8 @@ define([
 
         $( document ).trigger( 'search', 'foobar' );
 
-        this.search.should.have.been.calledOnce;
-        this.results.block.should.have.been.calledOnce;
+        expect(this.search).to.have.been.calledOnce;
+        expect(this.results.block).to.have.been.calledOnce;
       });
 
       it('updates the results', function() {
@@ -64,8 +64,8 @@ define([
 
         $( document ).trigger( 'search', 'foo' );
 
-        this.results.update.should.have.been.calledOnce;
-        this.results.update.should.have.been.calledWithExactly(['bar'], 'baz', 'baz');
+        expect(this.results.update).to.have.been.calledOnce;
+        expect(this.results.update).to.have.been.calledWithExactly(['bar'], 'baz', 'baz');
       });
 
       it('ignores intervening events', function() {
@@ -75,8 +75,8 @@ define([
         // search once and hang
         this.search.returns(new $.Deferred());
         $( document ).trigger( 'search', 'foobar' );
-        this.search.should.have.been.calledOnce;
-        this.results.update.should.not.have.been.called;
+        expect(this.search).to.have.been.calledOnce;
+        expect(this.results.update).to.not.have.been.called;
 
         // reset spy
         this.search.reset();
@@ -84,8 +84,8 @@ define([
 
         $( document ).trigger( 'search', 'foobar' );
 
-        this.search.should.not.have.been.called;
-        this.results.update.should.not.have.been.called;
+        expect(this.search).to.not.have.been.called;
+        expect(this.results.update).to.not.have.been.called;
       });
     });
   });

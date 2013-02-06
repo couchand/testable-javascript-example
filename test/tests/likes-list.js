@@ -15,8 +15,8 @@ define([
 
         ll.add('foobar');
 
-        $('#test').children().length.should.eql(1);
-        $('#test').eq(0).text().should.eql('foobar');
+        expect($('#test').children().length).to.eql(1);
+        expect($('#test').eq(0).text()).to.eql('foobar');
       });
 
       it('only adds a person once', function() {
@@ -25,7 +25,7 @@ define([
 
         ll.add('foobar');
 
-        $('#test').children().length.should.eql(1);
+        expect($('#test').children().length).to.eql(1);
       });
 
     });
