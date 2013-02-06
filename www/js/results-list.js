@@ -1,4 +1,4 @@
-define(['template-store', 'jquery', 'underscore'], function(TemplateStore, $, _) {
+define(['jquery', 'underscore'], function( $, _ ) {
 
   var ResultsList = function(sel) {
     var el = this.el = $(sel);
