@@ -7,7 +7,7 @@ define([
 
     el.on( 'click', '.like', function( e ) {
       e.preventDefault();
-      var name = $( this ).closest( 'li' ).find( 'h2' ).text();
+      var name = $( this ).closest( 'li' ).data('name');
       el.trigger( 'like', name );
     });
   };
