@@ -3,6 +3,9 @@
 Testable JavaScript Example
 ===========================
 
+This is the expect branch.  This is a demonstration of the
+expect assertion library in Chai.
+
 This is an example application illustrating best practices
 in testing JavaScript applications.  It began with an app
 given to me as an assignment in the Writing Testable
