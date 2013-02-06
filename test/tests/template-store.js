@@ -4,7 +4,6 @@ define([
 
   describe('TemplateStore', function() {
     describe('#fetch', function(){
-
       beforeEach(function() {
         this.xhr = sinon.useFakeXMLHttpRequest();
         var requests = this.requests = [];
@@ -52,8 +51,6 @@ define([
 
         this.requests[0].respond( 200, {}, 'foobar' );
       });
-
     });
   });
-
 });

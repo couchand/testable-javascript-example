@@ -13,6 +13,7 @@ define([
         expect(s.isUp()).to.eql(true);
         expect(didRaise).to.eql(true);
       });
+
       it('returns false when already raised', function() {
         var s = new Semaphore();
         s.raise();
@@ -33,6 +34,7 @@ define([
         expect(s.isDown()).to.eql(true);
         expect(didLower).to.eql(true);
       });
+
       it('returns false when already lowered', function() {
         var s = new Semaphore();
 
@@ -48,6 +50,7 @@ define([
 
         expect(s.isUp()).to.equal(false);
       });
+
       it('returns true when raised', function() {
         var s = new Semaphore();
         s.raise();
@@ -62,6 +65,7 @@ define([
 
         expect(s.isDown()).to.equal(true);
       });
+
       it('returns false when raised', function() {
         var s = new Semaphore();
         s.raise();
@@ -69,7 +73,5 @@ define([
         expect(s.isDown()).to.equal(false);
       });
     });
-
   });
-
 });

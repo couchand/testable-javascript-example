@@ -49,7 +49,5 @@ define([
         expect(p.isEmpty()).to.equal(false);
       });
     });
-
   });
-
 });

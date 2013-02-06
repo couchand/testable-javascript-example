@@ -5,7 +5,6 @@ define([
 
   describe('SearchForm', function() {
     describe('onSubmit', function() {
-
       beforeEach(function() {
         var form = $('<form>');
         $('<input name="q" type="text">').appendTo( form );
@@ -21,7 +20,6 @@ define([
           that.searchTerm = q;
         });
       });
-
       afterEach(function() {
         $('#test').empty();
       });
@@ -44,8 +42,6 @@ define([
         expect(this.searchFired).to.eql(true);
         expect(this.searchTerm).to.eql('foobar');
       });
-
     });
   });
-
 });

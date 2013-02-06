@@ -5,7 +5,6 @@ define([
 
   describe('LikesList', function() {
     describe('#add', function() {
-
       afterEach(function() {
         $('#test').empty();
       });
@@ -27,8 +26,6 @@ define([
 
         expect($('#test').children().length).to.eql(1);
       });
-
     });
   });
-
 });
