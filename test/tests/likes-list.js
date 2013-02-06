@@ -1,7 +1,7 @@
 define([
   'likes-list',
   'jquery'
-], function(LikesList, $) {
+], function( LikesList, $ ) {
 
   describe('LikesList', function() {
     describe('#add', function() {
