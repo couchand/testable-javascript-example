@@ -3,8 +3,8 @@ define([
 ], function(People) {
 
   describe('People', function() {
-    describe('#findByName', function() {
 
+    describe('.findByName', function() {
       beforeEach(function() {
         this.xhr = sinon.useFakeXMLHttpRequest();
         var requests = this.requests = [];
