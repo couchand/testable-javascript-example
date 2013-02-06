@@ -58,6 +58,25 @@ define([
         this.results.update.callCount.should.equal(1);
         this.results.update.calledWith(['foobar'], 'baz').should.equal(true);
       });
+      it('ignores intervening calls', function() {
+        var ac = new ApplicationController();
+        ac.registerResults( this.results );
+
+        // search once and hang
+        this.search.returns(new $.Deferred());
+        $( document ).trigger( 'search', 'foobar' );
+        this.search.callCount.should.equal(1);
+        this.results.update.callCount.should.equal(0);
+
+        // reset spy
+        this.search.reset();
+        this.search.returns(['foobar']);
+
+        $( document ).trigger( 'search', 'foobar' );
+
+        this.search.callCount.should.equal(0);
+        this.results.update.callCount.should.equal(0);
+      });
     });
 
   });
