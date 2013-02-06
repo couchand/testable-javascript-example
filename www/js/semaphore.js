@@ -14,16 +14,18 @@ define([], function() {
 
   Semaphore.prototype.raise = function() {
     if ( this.state ) {
-      throw new Error('tried to raise a raised semaphor');
+      return false;
     }
     this.state = true;
+    return true;
   };
 
   Semaphore.prototype.lower = function() {
     if ( !this.state ) {
-      throw 'tried to lower a lowered semaphore';
+      return false;
     }
     this.state = false;
+    return true;
   };
 
   return Semaphore;

@@ -6,18 +6,19 @@ define(['semaphore'], function(Semaphore) {
       it('raises the semaphore', function() {
         var s = new Semaphore();
 
-        s.raise();
+        var didRaise = s.raise();
 
         s.isUp().should.eql(true);
+        didRaise.should.eql(true);
       });
 
-      it('throws an error when already raised', function() {
+      it('returns false when already raised', function() {
         var s = new Semaphore();
         s.raise();
 
-        (function() {
-          s.raise();
-        }).should.throwError(/raised/i);
+        var didRaise = s.raise();
+
+        didRaise.should.eql(false);
       });
 
     });
@@ -28,9 +29,18 @@ define(['semaphore'], function(Semaphore) {
         var s = new Semaphore();
         s.raise(); // to avoid unlowerable exception
 
-        s.lower();
+        var didLower = s.lower();
 
         s.isDown().should.eql(true);
+        didLower.should.eql(true);
+      });
+
+      it('returns false when already lowered', function() {
+        var s = new Semaphore();
+
+        var didLower = s.lower();
+
+        didLower.should.eql(false);
       });
 
     });
