@@ -25,19 +25,21 @@ module.exports = function(grunt) {
           browser: true,
           globals: {
             require: true,
-            define: true,
-            beforeEach: true,
-            afterEach: true,
-            sinon: true,
-            describe: true,
-            it: true
+            define: true
           }
         },
       },
       test: {
         src: ['test/tests/*.js'],
         options: {
-          expr: true
+          expr: true,
+          globals: {
+            beforeEach: true,
+            afterEach: true,
+            sinon: true,
+            describe: true,
+            it: true
+          }
         }
       }
     },
