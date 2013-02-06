@@ -41,6 +41,7 @@ define([
         this.search.restore();
         this.templates.restore();
       });
+
       it('searches for people', function() {
         var ac = new ApplicationController();
         ac.registerResults( this.results );
@@ -53,6 +54,7 @@ define([
         this.search.should.have.been.calledOnce;
         this.results.block.should.have.been.calledOnce;
       });
+
       it('updates the results', function() {
         var ac = new ApplicationController();
         ac.registerResults( this.results );
@@ -65,6 +67,7 @@ define([
         this.results.update.should.have.been.calledOnce;
         this.results.update.should.have.been.calledWithExactly(['bar'], 'baz', 'baz');
       });
+
       it('ignores intervening events', function() {
         var ac = new ApplicationController();
         ac.registerResults( this.results );
@@ -85,7 +88,5 @@ define([
         this.results.update.should.not.have.been.called;
       });
     });
-
   });
-
 });
