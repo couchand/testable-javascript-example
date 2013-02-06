@@ -19,6 +19,15 @@ define([
         $('#test').eq(0).text().should.eql('foobar');
       });
 
+      it('only adds a person once', function() {
+        var ll = new LikesList('#test');
+        ll.add('foobar');
+
+        ll.add('foobar');
+
+        $('#test').children().length.should.eql(1);
+      });
+
     });
   });
 
