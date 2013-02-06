@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/couchand/testable-javascript-example.png?branch=master)](https://travis-ci.org/couchand/testable-javascript-example)
+[![Build Status](https://travis-ci.org/couchand/testable-javascript-example.png?branch=expect)](https://travis-ci.org/couchand/testable-javascript-example)
 
 Testable JavaScript Example
 ===========================
