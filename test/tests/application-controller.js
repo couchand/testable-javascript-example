@@ -16,13 +16,14 @@ define([
       afterEach(function() {
         $( document ).off('like search');
       });
-      it('calls like.add with the person', function() {
+
+      it('calls likes.add with the person', function() {
         var ac = new ApplicationController();
         ac.registerLikes( this.likes );
 
         $( document ).trigger( 'like', 'foobar' );
 
-        this.likes.add.callCount.should.equal(1);
+        this.likes.add.should.have.been.calledOnce;
       });
     });
 
@@ -49,8 +50,8 @@ define([
 
         $( document ).trigger( 'search', 'foobar' );
 
-        this.search.callCount.should.equal(1);
-        this.results.block.callCount.should.equal(1);
+        this.search.should.have.been.calledOnce;
+        this.results.block.should.have.been.calledOnce;
       });
       it('updates the results', function() {
         var ac = new ApplicationController();
@@ -61,8 +62,8 @@ define([
 
         $( document ).trigger( 'search', 'foo' );
 
-        this.results.update.callCount.should.equal(1);
-        this.results.update.calledWithExactly(['bar'], 'baz', 'baz').should.equal(true);
+        this.results.update.should.have.been.calledOnce;
+        this.results.update.should.have.been.calledWithExactly(['bar'], 'baz', 'baz');
       });
       it('ignores intervening events', function() {
         var ac = new ApplicationController();
@@ -71,8 +72,8 @@ define([
         // search once and hang
         this.search.returns(new $.Deferred());
         $( document ).trigger( 'search', 'foobar' );
-        this.search.callCount.should.equal(1);
-        this.results.update.callCount.should.equal(0);
+        this.search.should.have.been.calledOnce;
+        this.results.update.should.not.have.been.called;
 
         // reset spy
         this.search.reset();
@@ -80,8 +81,8 @@ define([
 
         $( document ).trigger( 'search', 'foobar' );
 
-        this.search.callCount.should.equal(0);
-        this.results.update.callCount.should.equal(0);
+        this.search.should.not.have.been.called;
+        this.results.update.should.not.have.been.called;
       });
     });
 
