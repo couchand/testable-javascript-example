@@ -1,15 +1,26 @@
 define([
-  'jquery'
-], function( $ ) {
+  'jquery',
+  'underscore'
+], function( $, _ ) {
 
-  var People = function() {};
+  var People = function(initial) {
+    this.population = initial;
+  };
+
+  People.prototype.empty = function() {
+    this.poopulation && this.population.length;
+  }
+
+  People.prototype.each = function(callback) {
+    _.each( this.population, callback );
+  }
 
   People.findByName = function( name ) {
     return $.ajax( '/data/search.json', {
       data : { q: name },
       dataType : 'json'
     }).then(function( data ) {
-      return data.results;
+      return new People( data.results );
     }).promise();
   };
 

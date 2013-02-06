@@ -1,5 +1,7 @@
-<% if (people.length) { %>
-  <% _.each(people, function(person) { %>
+<% if (people.empty()) { %>
+  <li class="no-results">No results found.</li>
+<% } else { %>
+  <% people.each(function(person) { %>
   <li class="result" data-name="<%= person.name %>">
     <h2><%= person.name %></h2>
     <a class="btn btn-primary like"><i class="icon-thumbs-up icon-white"></i> Like</a>
@@ -11,6 +13,4 @@
     </dl>
   </li>
   <% }); %>
-<% } else { %>
-  <li class="no-results">No results found.</li>
 <% } %>
