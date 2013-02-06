@@ -1,0 +1,9 @@
+<% if (people.isEmpty()) { %>
+  <li class="no-results">You haven't liked anything yet.</li>
+<% } else { %>
+  <% people.each(function(person) { %>
+  <li class="like" data-name="<%= person.name %>">
+    <%= person.name %>
+  </li>
+  <% }); %>
+<% } %>
