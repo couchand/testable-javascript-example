@@ -4,6 +4,7 @@ require([
   'likes-list',
   'results-list',
   'semaphore',
+  'search-form',
   'jquery',
   'underscore'
 ], function(
@@ -12,6 +13,7 @@ require([
   LikesList,
   ResultsList,
   Semaphore,
+  SearchForm,
   $,
   _
 ) {
@@ -21,20 +23,13 @@ require([
     var results = new ResultsList( '#results' );
     var likes = new LikesList( '#liked' );
     var pending = new Semaphore();
+    var searchForm = new SearchForm( '#searchForm' );
 
-    $( '#searchForm' ).on( 'submit', function( e ) {
-      e.preventDefault();
-
+    $( document ).on( 'search', function( e, name ) {
       if ( pending.isUp() ) { return; }
-
-      var form = $( this );
-      var query = $.trim( form.find( 'input[name="q"]' ).val() );
-
-      if ( !query ) { return; }
-
       pending.raise();
 
-      var peopleFound = People.findByName( query );
+      var peopleFound = People.findByName( name );
       var templatesFetched = templates.fetch('people-detailed.tmpl');
 
       $.when(

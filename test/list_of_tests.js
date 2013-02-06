@@ -4,6 +4,7 @@ define([], function() {
     'tests/people',
     'tests/likes-list',
     'tests/results-list',
-    'tests/semaphore'
+    'tests/semaphore',
+    'tests/search-form'
   ];
 });
