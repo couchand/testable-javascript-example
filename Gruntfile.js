@@ -38,7 +38,8 @@ module.exports = function(grunt) {
             afterEach: true,
             sinon: true,
             describe: true,
-            it: true
+            it: true,
+            expect: true
           }
         }
       }
