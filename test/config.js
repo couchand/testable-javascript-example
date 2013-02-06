@@ -8,6 +8,7 @@
     },
     'bdd-should': function() {
       window.shouldchai = chai.should();
+      chai.Assertion.prototype.throwError = chai.Assertion.prototype.throw;
     },
     'bdd-expect': function() {
       window.expect = chai.expect;
