@@ -9,27 +9,35 @@ module.exports = function(grunt) {
       tasks: 'test'
     },
     jshint: {
-      files: ['www/js/**/*.js','test/tests/*.js'],
-      options: {
-        curly: true,
-        eqeqeq: true,
-        immed: false,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        browser: true,
-        globals: {
-          require: true,
-          define: true,
-          beforeEach: true,
-          afterEach: true,
-          sinon: true,
-          describe: true,
-          it: true
+      main: {
+        src: ['www/js/**/*.js'],
+        options: {
+          curly: true,
+          eqeqeq: true,
+          immed: true,
+          latedef: true,
+          newcap: true,
+          noarg: true,
+          sub: true,
+          undef: true,
+          boss: true,
+          eqnull: true,
+          browser: true,
+          globals: {
+            require: true,
+            define: true,
+            beforeEach: true,
+            afterEach: true,
+            sinon: true,
+            describe: true,
+            it: true
+          }
+        },
+      },
+      test: {
+        src: ['test/tests/*.js'],
+        options: {
+          expr: true
         }
       }
     },
