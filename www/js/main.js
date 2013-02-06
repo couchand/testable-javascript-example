@@ -5,8 +5,7 @@ require([
   'results-list',
   'semaphore',
   'search-form',
-  'jquery',
-  'underscore'
+  'jquery'
 ], function(
   TemplateStore,
   People,
@@ -14,8 +13,7 @@ require([
   ResultsList,
   Semaphore,
   SearchForm,
-  $,
-  _
+  $
 ) {
   var templates = new TemplateStore();
   var pending = new Semaphore();
