@@ -34,9 +34,12 @@ require([
 
       pending.raise();
 
+      var peopleFound = People.findByName( query );
+      var templatesFetched = templates.fetch('people-detailed.tmpl');
+
       $.when(
-        People.findByName( query ),
-        templates.fetch('people-detailed.tmpl')
+        peopleFound,
+        templatesFetched
       ).done(
         $.proxy( results, 'update' )
       ).always(
