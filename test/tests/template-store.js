@@ -42,15 +42,15 @@ define([
         fetchResult.then.should.be.a('function');
       });
 
-      it('returns a promise for a templating function', function() {
+      it('returns a promise for a templating function', function(done) {
         var ts = new TemplateStore();
 
-        var fetchResult = ts.fetch('foobar');
-        this.requests[0].respond( 200, {}, 'foobar' );
-
-        fetchResult.then(function( result ) {
+        ts.fetch('foobar').then(function( result ) {
           result.should.be.a('function');
+          done();
         });
+
+        this.requests[0].respond( 200, {}, 'foobar' );
       });
 
     });
