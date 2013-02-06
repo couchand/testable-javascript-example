@@ -25,7 +25,7 @@ define(['search-form', 'jquery'], function(SearchForm, $) {
       it('does nothing with no input', function() {
         var sf = new SearchForm('#test > form');
 
-        $('#test input').val('');
+        $('#test input').val('   ');
         $('#test button').trigger('submit');
 
         this.searchFired.should.eql(false);
