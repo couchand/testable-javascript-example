@@ -7,13 +7,13 @@ define([
     this.population = initial;
   };
 
-  People.prototype.empty = function() {
-    this.poopulation && this.population.length;
-  }
+  People.prototype.isEmpty = function() {
+    return !(this.population && this.population.length);
+  };
 
   People.prototype.each = function(callback) {
     _.each( this.population, callback );
-  }
+  };
 
   People.findByName = function( name ) {
     return $.ajax( '/data/search.json', {

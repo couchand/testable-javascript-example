@@ -28,8 +28,28 @@ define([
 
         promise.then.should.be.a('function');
       });
-
     });
+
+    describe('#empty', function() {
+      it('returns true when undefined', function() {
+        var p = new People();
+
+        p.isEmpty().should.equal(true);
+      });
+
+      it('returns true when empty', function() {
+        var p = new People([]);
+
+        p.isEmpty().should.equal(true);
+      });
+
+      it('returns false when not empty', function() {
+        var p = new People(['foo']);
+
+        p.isEmpty().should.equal(false);
+      });
+    });
+
   });
 
 });
