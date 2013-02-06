@@ -10,8 +10,8 @@ define([
         $('#test').empty();
       });
 
-      it('adds an element', function() {
-        var ll = new LikesList('#test');
+      it('adds a person', function() {
+        var ll = new LikesList( '#test' );
 
         ll.add('foobar');
 
