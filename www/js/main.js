@@ -18,11 +18,11 @@ require([
   _
 ) {
   var templates = new TemplateStore();
+  var pending = new Semaphore();
 
   $(function() {
     var results = new ResultsList( '#results' );
     var likes = new LikesList( '#liked' );
-    var pending = new Semaphore();
     var searchForm = new SearchForm( '#searchForm' );
 
     $( document ).on( 'search', function( e, name ) {
