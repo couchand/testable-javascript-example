@@ -44,7 +44,7 @@ require([
       results.block();
     });
 
-    results.el.on('like', function(e, person) {
+    $( document ).on('like', function(e, person) {
       likes.add( person );
     });
 
