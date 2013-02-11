@@ -19,14 +19,14 @@ define([
       it('fetches from the right url', function() {
         People.findByName('foo bar');
 
-        expect(this.requests.length).to.eql(1);
-        expect(this.requests[0].url).to.eql('/data/search.json?q=foo+bar');
+        assert.equal(this.requests.length, 1);
+        assert.equal(this.requests[0].url, '/data/search.json?q=foo+bar');
       });
 
       it('returns a promise', function() {
         var promise = People.findByName('foo bar');
 
-        expect(promise.then).to.be.a('function');
+        assert.equal(typeof promise.then, 'function');
       });
     });
 
@@ -34,19 +34,19 @@ define([
       it('returns true when undefined', function() {
         var p = new People();
 
-        expect(p.isEmpty()).to.equal(true);
+        assert.ok(p.isEmpty());
       });
 
       it('returns true when empty', function() {
         var p = new People([]);
 
-        expect(p.isEmpty()).to.equal(true);
+        assert.ok(p.isEmpty());
       });
 
       it('returns false when not empty', function() {
         var p = new People(['foo']);
 
-        expect(p.isEmpty()).to.equal(false);
+        assert.ok(!p.isEmpty());
       });
     });
   });
