@@ -20,8 +20,8 @@ define([
 
         ts.fetch('foobar');
 
-        expect(this.requests.length).to.eql(1);
-        expect(this.requests[0].url).to.eql('/templates/foobar');
+        assert.equal(this.requests.length, 1);
+        assert.equal(this.requests[0].url, '/templates/foobar');
       });
 
       it('caches responses', function() {
@@ -30,7 +30,7 @@ define([
 
         ts.fetch('foobar');
 
-        expect(this.requests.length).to.eql(1);
+        assert.equal(this.requests.length, 1);
       });
 
       it('returns a promise', function() {
@@ -38,14 +38,14 @@ define([
 
         var fetchResult = ts.fetch('foobar');
 
-        expect(fetchResult.then).to.be.a('function');
+        assert.equal(typeof fetchResult.then, 'function');
       });
 
       it('returns a promise for a templating function', function(done) {
         var ts = new TemplateStore();
 
         ts.fetch('foobar').then(function( result ) {
-          expect(result).to.be.a('function');
+          assert.equal(typeof result, 'function');
           done();
         });
 

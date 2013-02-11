@@ -76,7 +76,7 @@ define([
         this.search.returns(new $.Deferred());
         $( document ).trigger( 'search', 'foobar' );
         assert.ok(this.search.calledOnce);
-        assert.ok(this.results.update.not.called);
+        assert.ok(this.results.update.notCalled);
 
         // reset spy
         this.search.reset();
@@ -84,8 +84,8 @@ define([
 
         $( document ).trigger( 'search', 'foobar' );
 
-        assert.ok(this.search.not.called);
-        assert.ok(this.results.update.not.called);
+        assert.ok(this.search.notCalled);
+        assert.ok(this.results.update.notCalled);
       });
     });
   });

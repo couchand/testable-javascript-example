@@ -30,7 +30,7 @@ define([
         $('#test input').val('   ');
         $('#test button').trigger('submit');
 
-        expect(this.searchFired).to.eql(false);
+        assert.ok(!this.searchFired);
       });
 
       it('performs a search with input', function() {
@@ -39,8 +39,8 @@ define([
         $('#test input').val('foobar');
         $('#test button').trigger('submit');
 
-        expect(this.searchFired).to.eql(true);
-        expect(this.searchTerm).to.eql('foobar');
+        assert.ok(this.searchFired);
+        assert.equal(this.searchTerm, 'foobar');
       });
     });
   });

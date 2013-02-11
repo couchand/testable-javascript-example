@@ -10,8 +10,8 @@ define([
 
         var didRaise = s.raise();
 
-        expect(s.isUp()).to.eql(true);
-        expect(didRaise).to.eql(true);
+        assert.ok(s.isUp());
+        assert.ok(didRaise);
       });
 
       it('returns false when already raised', function() {
@@ -20,7 +20,7 @@ define([
 
         var didRaise = s.raise();
 
-        expect(didRaise).to.eql(false);
+        assert.ok(!didRaise);
       });
     });
 
@@ -31,8 +31,8 @@ define([
 
         var didLower = s.lower();
 
-        expect(s.isDown()).to.eql(true);
-        expect(didLower).to.eql(true);
+        assert.ok(s.isDown());
+        assert.ok(didLower);
       });
 
       it('returns false when already lowered', function() {
@@ -40,7 +40,7 @@ define([
 
         var didLower = s.lower();
 
-        expect(didLower).to.eql(false);
+        assert.ok(!didLower);
       });
     });
 
@@ -48,14 +48,14 @@ define([
       it('returns false when lowered', function() {
         var s = new Semaphore();
 
-        expect(s.isUp()).to.equal(false);
+        assert.ok(!s.isUp());
       });
 
       it('returns true when raised', function() {
         var s = new Semaphore();
         s.raise();
 
-        expect(s.isUp()).to.equal(true);
+        assert.ok(s.isUp());
       });
     });
 
@@ -63,14 +63,14 @@ define([
       it('returns true when lowered', function() {
         var s = new Semaphore();
 
-        expect(s.isDown()).to.equal(true);
+        assert.ok(s.isDown());
       });
 
       it('returns false when raised', function() {
         var s = new Semaphore();
         s.raise();
 
-        expect(s.isDown()).to.equal(false);
+        assert.ok(!s.isDown());
       });
     });
   });

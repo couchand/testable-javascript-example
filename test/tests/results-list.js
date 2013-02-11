@@ -17,8 +17,8 @@ define([
 
         rl.block();
 
-        expect($('#test ul').children().length).to.eql(1);
-        expect($('#test ul').children().eq(0).text()).to.match(/search/i);
+        assert.equal($('#test ul').children().length, 1);
+        assert.ok($('#test ul').children().eq(0).text().match(/search/i));
       });
     });
   });
