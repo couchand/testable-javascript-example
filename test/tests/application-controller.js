@@ -23,7 +23,7 @@ define([
 
         $( document ).trigger( 'like', 'foobar' );
 
-        expect(this.likes.add).to.have.been.calledOnce;
+        assert.ok(this.likes.add.calledOnce);
       });
     });
 
@@ -51,8 +51,8 @@ define([
 
         $( document ).trigger( 'search', 'foobar' );
 
-        expect(this.search).to.have.been.calledOnce;
-        expect(this.results.block).to.have.been.calledOnce;
+        assert.ok(this.search.calledOnce);
+        assert.ok(this.results.block.calledOnce);
       });
 
       it('updates the results', function() {
@@ -64,8 +64,8 @@ define([
 
         $( document ).trigger( 'search', 'foo' );
 
-        expect(this.results.update).to.have.been.calledOnce;
-        expect(this.results.update).to.have.been.calledWithExactly(['bar'], 'baz', 'baz');
+        assert.ok(this.results.update.calledOnce);
+        assert.ok(this.results.update.calledWithExactly(['bar'], 'baz', 'baz'));
       });
 
       it('ignores intervening events', function() {
@@ -75,8 +75,8 @@ define([
         // search once and hang
         this.search.returns(new $.Deferred());
         $( document ).trigger( 'search', 'foobar' );
-        expect(this.search).to.have.been.calledOnce;
-        expect(this.results.update).to.not.have.been.called;
+        assert.ok(this.search.calledOnce);
+        assert.ok(this.results.update.not.called);
 
         // reset spy
         this.search.reset();
@@ -84,8 +84,8 @@ define([
 
         $( document ).trigger( 'search', 'foobar' );
 
-        expect(this.search).to.not.have.been.called;
-        expect(this.results.update).to.not.have.been.called;
+        assert.ok(this.search.not.called);
+        assert.ok(this.results.update.not.called);
       });
     });
   });
