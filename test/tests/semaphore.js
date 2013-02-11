@@ -2,10 +2,10 @@ define([
   'semaphore'
 ], function(Semaphore) {
 
-  describe('Semaphore', function() {
+  suite('Semaphore', function() {
 
-    describe('#raise', function() {
-      it('raises the semaphore', function() {
+    suite('#raise', function() {
+      test('raises the semaphore', function() {
         var s = new Semaphore();
 
         var didRaise = s.raise();
@@ -14,7 +14,7 @@ define([
         assert.ok(didRaise);
       });
 
-      it('returns false when already raised', function() {
+      test('returns false when already raised', function() {
         var s = new Semaphore();
         s.raise();
 
@@ -24,8 +24,8 @@ define([
       });
     });
 
-    describe('#lower', function() {
-      it('lowers the semaphore', function() {
+    suite('#lower', function() {
+      test('lowers the semaphore', function() {
         var s = new Semaphore();
         s.raise(); // to avoid unlowerable exception
 
@@ -35,7 +35,7 @@ define([
         assert.ok(didLower);
       });
 
-      it('returns false when already lowered', function() {
+      test('returns false when already lowered', function() {
         var s = new Semaphore();
 
         var didLower = s.lower();
@@ -44,14 +44,14 @@ define([
       });
     });
 
-    describe('#isUp', function() {
-      it('returns false when lowered', function() {
+    suite('#isUp', function() {
+      test('returns false when lowered', function() {
         var s = new Semaphore();
 
         assert.ok(!s.isUp());
       });
 
-      it('returns true when raised', function() {
+      test('returns true when raised', function() {
         var s = new Semaphore();
         s.raise();
 
@@ -59,14 +59,14 @@ define([
       });
     });
 
-    describe('#isDown', function() {
-      it('returns true when lowered', function() {
+    suite('#isDown', function() {
+      test('returns true when lowered', function() {
         var s = new Semaphore();
 
         assert.ok(s.isDown());
       });
 
-      it('returns false when raised', function() {
+      test('returns false when raised', function() {
         var s = new Semaphore();
         s.raise();
 

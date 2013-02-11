@@ -5,19 +5,19 @@ define([
   'jquery'
 ], function( TemplateStore, ApplicationController, People, $ ) {
 
-  describe('ApplicationController', function() {
+  suite('ApplicationController', function() {
 
-    describe('onLike', function() {
-      beforeEach(function() {
+    suite('onLike', function() {
+      setup(function() {
         this.likes = {
           add: new sinon.spy()
         };
       });
-      afterEach(function() {
+      teardown(function() {
         $( document ).off('like search');
       });
 
-      it('calls likes.add with the person', function() {
+      test('calls likes.add with the person', function() {
         var ac = new ApplicationController();
         ac.registerLikes( this.likes );
 
@@ -27,8 +27,8 @@ define([
       });
     });
 
-    describe('onSearch', function() {
-     beforeEach(function() {
+    suite('onSearch', function() {
+     setup(function() {
         this.search = sinon.stub( People, 'findByName' );
         this.templates = sinon.stub( TemplateStore.prototype, 'fetch' );
         this.results = {
@@ -36,13 +36,13 @@ define([
           update: new sinon.spy()
         };
       });
-      afterEach(function() {
+      teardown(function() {
         $( document ).off('like search');
         this.search.restore();
         this.templates.restore();
       });
 
-      it('searches for people', function() {
+      test('searches for people', function() {
         var ac = new ApplicationController();
         ac.registerResults( this.results );
 
@@ -55,7 +55,7 @@ define([
         assert.ok(this.results.block.calledOnce);
       });
 
-      it('updates the results', function() {
+      test('updates the results', function() {
         var ac = new ApplicationController();
         ac.registerResults( this.results );
 
@@ -68,7 +68,7 @@ define([
         assert.ok(this.results.update.calledWithExactly(['bar'], 'baz', 'baz'));
       });
 
-      it('ignores intervening events', function() {
+      test('ignores intervening events', function() {
         var ac = new ApplicationController();
         ac.registerResults( this.results );
 

@@ -3,9 +3,9 @@ define([
   'jquery'
 ], function(SearchForm, $) {
 
-  describe('SearchForm', function() {
-    describe('onSubmit', function() {
-      beforeEach(function() {
+  suite('SearchForm', function() {
+    suite('onSubmit', function() {
+      setup(function() {
         var form = $('<form>');
         $('<input name="q" type="text">').appendTo( form );
         $('<button type="submit">').appendTo( form );
@@ -20,11 +20,11 @@ define([
           that.searchTerm = q;
         });
       });
-      afterEach(function() {
+      teardown(function() {
         $('#test').empty();
       });
 
-      it('does nothing with no input', function() {
+      test('does nothing with no input', function() {
         var sf = new SearchForm('#test > form');
 
         $('#test input').val('   ');
@@ -33,7 +33,7 @@ define([
         assert.ok(!this.searchFired);
       });
 
-      it('performs a search with input', function() {
+      test('performs a search with input', function() {
         var sf = new SearchForm('#test > form');
 
         $('#test input').val('foobar');

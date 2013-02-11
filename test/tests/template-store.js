@@ -2,20 +2,20 @@ define([
   'template-store'
 ], function(TemplateStore) {
 
-  describe('TemplateStore', function() {
-    describe('#fetch', function(){
-      beforeEach(function() {
+  suite('TemplateStore', function() {
+    suite('#fetch', function(){
+      setup(function() {
         this.xhr = sinon.useFakeXMLHttpRequest();
         var requests = this.requests = [];
         this.xhr.onCreate = function(xhr) {
           requests.push(xhr);
         };
       });
-      afterEach(function() {
+      teardown(function() {
         this.xhr.restore();
       });
 
-      it('fetches from the correct location', function() {
+      test('fetches from the correct location', function() {
         var ts = new TemplateStore();
 
         ts.fetch('foobar');
@@ -24,7 +24,7 @@ define([
         assert.equal(this.requests[0].url, '/templates/foobar');
       });
 
-      it('caches responses', function() {
+      test('caches responses', function() {
         var ts = new TemplateStore();
         ts.fetch('foobar');
 
@@ -33,7 +33,7 @@ define([
         assert.equal(this.requests.length, 1);
       });
 
-      it('returns a promise', function() {
+      test('returns a promise', function() {
         var ts = new TemplateStore();
 
         var fetchResult = ts.fetch('foobar');
@@ -41,7 +41,7 @@ define([
         assert.equal(typeof fetchResult.then, 'function');
       });
 
-      it('returns a promise for a templating function', function(done) {
+      test('returns a promise for a templating function', function(done) {
         var ts = new TemplateStore();
 
         ts.fetch('foobar').then(function( result ) {

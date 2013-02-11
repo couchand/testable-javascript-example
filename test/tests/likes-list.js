@@ -3,13 +3,13 @@ define([
   'jquery'
 ], function( LikesList, $ ) {
 
-  describe('LikesList', function() {
-    describe('#add', function() {
-      afterEach(function() {
+  suite('LikesList', function() {
+    suite('#add', function() {
+      teardown(function() {
         $('#test').empty();
       });
 
-      it('adds a person', function() {
+      test('adds a person', function() {
         var ll = new LikesList( '#test' );
 
         ll.add('foobar');
@@ -18,7 +18,7 @@ define([
         assert.equal($('#test').eq(0).text(), 'foobar');
       });
 
-      it('only adds a person once', function() {
+      test('only adds a person once', function() {
         var ll = new LikesList('#test');
         ll.add('foobar');
 

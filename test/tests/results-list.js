@@ -3,16 +3,16 @@ define([
   'jquery'
 ], function(ResultsList, $) {
 
-  describe('ResultsList', function() {
-    describe('#block', function() {
-      beforeEach(function() {
+  suite('ResultsList', function() {
+    suite('#block', function() {
+      setup(function() {
         $('<ul>').appendTo( $('#test') );
       });
-      afterEach(function() {
+      teardown(function() {
         $('#test').empty();
       });
 
-      it('shows a searching message', function() {
+      test('shows a searching message', function() {
         var rl = new ResultsList('#test ul');
 
         rl.block();
